@@ -13,18 +13,23 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    timeout-minutes: 10
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run download script
-        run: bash download-uiux-skill.sh
+      - name: Download skill
+        timeout-minutes: 5
+        run: |
+          GIT_TERMINAL_PROMPT=0 bash download-uiux-skill.sh || {
+            echo "Download failed or timed out, using cached skill files"
+          }
 
       - name: Verify install
         run: |
           if [ -f ".claude/skills/ui-ux-pro-max/SKILL.md" ]; then
-            echo "Install successful - SKILL.md found"
+            echo "SKILL.md found - install OK"
           else
             echo "ERROR: SKILL.md not found"
             exit 1
