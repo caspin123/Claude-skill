@@ -1,7 +1,7 @@
 name: Download UI/UX Skill via Claude
 
 on:
-  workflow_dispatch:          # تشغيل يدوي من GitHub UI
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -15,55 +15,23 @@ jobs:
       contents: write
 
     steps:
-      # ── 1. سحب الكود ─────────────────────────────────────────────────
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # ── 2. تشغيل سكربت التحميل ───────────────────────────────────────
-      - name: Run download-uiux-skill.sh
-        run: |
-          chmod +x download-uiux-skill.sh
-          bash download-uiux-skill.sh
+      - name: Run download script
+        run: bash download-uiux-skill.sh
 
-      # ── 3. التحقق من نتيجة التحميل عبر Claude API ────────────────────
-      - name: Verify install with Claude
+      - name: Verify with Claude
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           pip install --quiet anthropic
+          python3 verify.py
 
-          python3 - <<'EOF'
-          import anthropic, os, sys
-
-          skill_path = ".claude/skills/ui-ux-pro-max/SKILL.md"
-          installed   = os.path.isfile(skill_path)
-
-          client = anthropic.Anthropic()
-          msg = client.messages.create(
-              model="claude-opus-4-6",
-              max_tokens=256,
-              messages=[{
-                  "role": "user",
-                  "content": (
-                      f"The UI/UX Pro Max skill installation {'succeeded' if installed else 'FAILED'}. "
-                      f"SKILL.md {'exists' if installed else 'is MISSING'} at {skill_path}. "
-                      "Reply with a one-line status summary."
-                  )
-              }]
-          )
-
-          print("Claude says:", msg.content[0].text)
-
-          if not installed:
-              print("ERROR: SKILL.md not found — installation failed.")
-              sys.exit(1)
-          EOF
-
-      # ── 4. حفظ الملفات المُثبَّتة في الريبو (اختياري) ─────────────────
-      - name: Commit installed skill files
+      - name: Commit skill files
         run: |
-          git config user.name  "github-actions[bot]"
+          git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .claude/ || true
-          git diff --cached --quiet || git commit -m "ci: update installed UI/UX Pro Max skill files"
+          git diff --cached --quiet || git commit -m "ci: update UI/UX Pro Max skill files"
           git push || true
