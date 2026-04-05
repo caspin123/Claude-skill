@@ -21,12 +21,14 @@ jobs:
       - name: Run download script
         run: bash download-uiux-skill.sh
 
-      - name: Verify with Claude
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - name: Verify install
         run: |
-          pip install --quiet anthropic
-          python3 verify.py
+          if [ -f ".claude/skills/ui-ux-pro-max/SKILL.md" ]; then
+            echo "Install successful - SKILL.md found"
+          else
+            echo "ERROR: SKILL.md not found"
+            exit 1
+          fi
 
       - name: Commit skill files
         run: |
