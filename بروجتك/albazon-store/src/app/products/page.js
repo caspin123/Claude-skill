@@ -3,7 +3,7 @@ import { useState, useMemo } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
-import { SlidersHorizontal, Grid3X3, LayoutGrid, X } from 'lucide-react';
+import { Grid3X3, LayoutGrid, Gamepad2 } from 'lucide-react';
 
 const allProducts = [
   { id: '1', name: 'Cyber Horizon 2077', slug: 'cyber-horizon-2077', price: 69.99, salePrice: 49.99, image: 'https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=600', stock: 999, featured: true, rating: 4.8, reviews: 12847, category: { name: 'PC Games', slug: 'pc-games' } },
@@ -62,8 +62,13 @@ export default function ProductsPage() {
       {/* Header */}
       <div className="bg-surface-50/50 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2">Game Store</h1>
-          <p className="text-gray-400">
+          <div className="flex items-center gap-3 mb-2">
+            <Gamepad2 size={28} className="text-brand-400" />
+            <h1 className="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight">
+              Game Store
+            </h1>
+          </div>
+          <p className="text-muted">
             Showing {filtered.length} items
             {category !== 'All' && ` in ${category}`}
           </p>
@@ -79,10 +84,10 @@ export default function ProductsPage() {
               <button
                 key={cat}
                 onClick={() => setCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
+                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer ${
                   category === cat
                     ? 'bg-brand-500 text-white shadow-glow-sm'
-                    : 'bg-surface-200 text-gray-400 hover:text-white hover:bg-surface-300'
+                    : 'bg-surface-200/80 text-muted border border-surface-300/50 hover:text-white hover:bg-surface-300/80 hover:border-surface-400/50'
                 }`}
               >
                 {cat}
@@ -92,10 +97,12 @@ export default function ProductsPage() {
 
           {/* Sort & view */}
           <div className="flex items-center gap-3">
+            <label className="sr-only" htmlFor="sort-select">Sort by</label>
             <select
+              id="sort-select"
               value={sort}
               onChange={(e) => setSort(e.target.value)}
-              className="px-4 py-2.5 bg-surface-200 border border-surface-300 rounded-xl text-sm text-gray-300 outline-none focus:border-brand-500"
+              className="px-4 py-2.5 bg-surface-200/80 border border-surface-300/50 rounded-xl text-sm text-gray-300 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all duration-200 cursor-pointer"
             >
               {sortOptions.map((opt) => (
                 <option key={opt.value} value={opt.value}>
@@ -103,17 +110,17 @@ export default function ProductsPage() {
                 </option>
               ))}
             </select>
-            <div className="hidden lg:flex items-center gap-1 bg-surface-200 rounded-xl p-1">
+            <div className="hidden lg:flex items-center gap-1 bg-surface-200/80 rounded-xl p-1 border border-surface-300/50">
               <button
                 onClick={() => setCols(3)}
-                className={`p-2 rounded-lg transition-colors ${cols === 3 ? 'bg-surface-300 text-white' : 'text-gray-500 hover:text-white'}`}
+                className={`p-2 rounded-lg transition-colors cursor-pointer ${cols === 3 ? 'bg-brand-500/20 text-brand-400' : 'text-muted-dark hover:text-white'}`}
                 aria-label="3 columns"
               >
                 <Grid3X3 size={16} />
               </button>
               <button
                 onClick={() => setCols(4)}
-                className={`p-2 rounded-lg transition-colors ${cols === 4 ? 'bg-surface-300 text-white' : 'text-gray-500 hover:text-white'}`}
+                className={`p-2 rounded-lg transition-colors cursor-pointer ${cols === 4 ? 'bg-brand-500/20 text-brand-400' : 'text-muted-dark hover:text-white'}`}
                 aria-label="4 columns"
               >
                 <LayoutGrid size={16} />
@@ -137,10 +144,11 @@ export default function ProductsPage() {
 
         {filtered.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-gray-500 text-lg">No games found in this category.</p>
+            <Gamepad2 size={48} className="text-surface-300 mx-auto mb-4" />
+            <p className="text-muted text-lg mb-4">No games found in this category.</p>
             <button
               onClick={() => setCategory('All')}
-              className="mt-4 btn-secondary"
+              className="btn-secondary cursor-pointer"
             >
               View All Games
             </button>

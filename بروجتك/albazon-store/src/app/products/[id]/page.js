@@ -9,7 +9,7 @@ import useCart from '@/hooks/useCart';
 import { formatPrice, getDiscountPercent } from '@/lib/utils';
 import {
   ShoppingCart, Heart, Star, Download, Shield, RotateCcw,
-  ChevronRight, Minus, Plus, Check,
+  ChevronRight, Minus, Plus, Check, Gamepad2,
 } from 'lucide-react';
 
 const productDB = {
@@ -54,13 +54,15 @@ export default function ProductPage() {
 
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex items-center gap-2 text-sm text-gray-500">
-          <Link href="/" className="hover:text-white transition-colors">Home</Link>
-          <ChevronRight size={14} />
-          <Link href="/products" className="hover:text-white transition-colors">Games</Link>
-          <ChevronRight size={14} />
-          <span className="text-gray-300">{product.name}</span>
-        </div>
+        <nav aria-label="Breadcrumb">
+          <ol className="flex items-center gap-2 text-sm text-muted-dark">
+            <li><Link href="/" className="hover:text-white transition-colors duration-200">Home</Link></li>
+            <li><ChevronRight size={14} /></li>
+            <li><Link href="/products" className="hover:text-white transition-colors duration-200">Games</Link></li>
+            <li><ChevronRight size={14} /></li>
+            <li className="text-muted">{product.name}</li>
+          </ol>
+        </nav>
       </div>
 
       {/* Product */}
@@ -68,14 +70,14 @@ export default function ProductPage() {
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
           {/* Images */}
           <div className="space-y-4">
-            <div className="relative aspect-square rounded-2xl overflow-hidden bg-surface-100 glass-card">
+            <div className="relative aspect-square rounded-2xl overflow-hidden bg-surface-100 glass-card border border-white/5 scanline-overlay">
               <img
                 src={product.images[selectedImg]}
                 alt={product.name}
                 className="w-full h-full object-cover"
               />
               {discount > 0 && (
-                <span className="absolute top-4 left-4 px-3 py-1.5 bg-red-500 text-white text-sm font-bold rounded-xl">
+                <span className="absolute top-4 left-4 px-3 py-1.5 bg-accent text-white text-sm font-bold rounded-xl shadow-neon-accent z-10">
                   -{discount}%
                 </span>
               )}
@@ -86,8 +88,8 @@ export default function ProductPage() {
                   <button
                     key={i}
                     onClick={() => setSelectedImg(i)}
-                    className={`w-20 h-20 rounded-xl overflow-hidden border-2 transition-all ${
-                      selectedImg === i ? 'border-brand-500' : 'border-transparent opacity-60 hover:opacity-100'
+                    className={`w-20 h-20 rounded-xl overflow-hidden border-2 transition-all duration-200 cursor-pointer ${
+                      selectedImg === i ? 'border-brand-500 shadow-glow-sm' : 'border-surface-300/50 opacity-60 hover:opacity-100'
                     }`}
                   >
                     <img src={img} alt="" className="w-full h-full object-cover" />
@@ -100,23 +102,23 @@ export default function ProductPage() {
           {/* Details */}
           <div className="space-y-6">
             <div>
-              <p className="text-sm text-brand-400 font-semibold uppercase tracking-wider mb-2">
+              <p className="section-label text-brand-400 mb-2">
                 {product.category.name}
               </p>
-              <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">
+              <h1 className="font-heading text-3xl sm:text-4xl font-bold text-white mb-3 tracking-tight">
                 {product.name}
               </h1>
               <div className="flex items-center gap-3">
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1" aria-label={`Rating ${product.rating} out of 5`}>
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star
                       key={i}
                       size={16}
-                      className={i < Math.floor(product.rating) ? 'text-amber-400 fill-amber-400' : 'text-gray-600'}
+                      className={i < Math.floor(product.rating) ? 'text-amber-400 fill-amber-400' : 'text-surface-300'}
                     />
                   ))}
                 </div>
-                <span className="text-sm text-gray-400">
+                <span className="text-sm text-muted">
                   {product.rating} ({product.reviews.toLocaleString()} reviews)
                 </span>
               </div>
@@ -124,23 +126,23 @@ export default function ProductPage() {
 
             {/* Price */}
             <div className="flex items-baseline gap-3">
-              <span className="text-4xl font-black text-white">
+              <span className="font-heading text-4xl font-black text-white">
                 {formatPrice(product.salePrice || product.price)}
               </span>
               {product.salePrice && (
-                <span className="text-xl text-gray-500 line-through">
+                <span className="text-xl text-muted-dark line-through">
                   {formatPrice(product.price)}
                 </span>
               )}
               {discount > 0 && (
-                <span className="badge bg-red-500/10 text-red-400 border border-red-500/20 text-sm">
+                <span className="badge-accent text-sm">
                   Save {formatPrice(product.price - product.salePrice)}
                 </span>
               )}
             </div>
 
             {/* Description */}
-            <p className="text-gray-400 leading-relaxed whitespace-pre-line">
+            <p className="text-muted leading-relaxed whitespace-pre-line">
               {product.description}
             </p>
 
@@ -148,8 +150,8 @@ export default function ProductPage() {
             {product.specs && (
               <div className="grid grid-cols-3 gap-3">
                 {product.specs.map(([label, value]) => (
-                  <div key={label} className="glass-card rounded-xl p-3 text-center">
-                    <p className="text-xs text-gray-500 mb-1">{label}</p>
+                  <div key={label} className="glass-card rounded-xl p-3 text-center border border-white/5">
+                    <p className="text-[10px] text-muted-dark mb-1 uppercase tracking-wider font-medium">{label}</p>
                     <p className="text-sm font-semibold text-white">{value}</p>
                   </div>
                 ))}
@@ -158,18 +160,18 @@ export default function ProductPage() {
 
             {/* Quantity + Add to cart */}
             <div className="flex items-center gap-4 pt-2">
-              <div className="flex items-center gap-0 bg-surface-200 rounded-xl border border-surface-300">
+              <div className="flex items-center gap-0 bg-surface-200/80 rounded-xl border border-surface-300/50">
                 <button
                   onClick={() => setQty(Math.max(1, qty - 1))}
-                  className="p-3 text-gray-400 hover:text-white transition-colors"
+                  className="p-3 text-muted hover:text-white transition-colors cursor-pointer"
                   aria-label="Decrease quantity"
                 >
                   <Minus size={18} />
                 </button>
-                <span className="w-12 text-center font-semibold text-white">{qty}</span>
+                <span className="w-12 text-center font-heading font-semibold text-white">{qty}</span>
                 <button
                   onClick={() => setQty(qty + 1)}
-                  className="p-3 text-gray-400 hover:text-white transition-colors"
+                  className="p-3 text-muted hover:text-white transition-colors cursor-pointer"
                   aria-label="Increase quantity"
                 >
                   <Plus size={18} />
@@ -178,7 +180,7 @@ export default function ProductPage() {
 
               <button
                 onClick={handleAdd}
-                className={`btn-primary flex-1 py-4 text-base ${added ? 'from-emerald-600 to-emerald-500' : ''}`}
+                className={`btn-primary flex-1 py-4 text-base cursor-pointer ${added ? '!from-emerald-600 !to-emerald-500' : ''}`}
               >
                 {added ? (
                   <>
@@ -194,7 +196,7 @@ export default function ProductPage() {
               </button>
 
               <button
-                className="p-4 rounded-xl bg-surface-200 border border-surface-300 text-gray-400 hover:text-red-400 hover:border-red-500/30 transition-colors"
+                className="p-4 rounded-xl bg-surface-200/80 border border-surface-300/50 text-muted hover:text-accent hover:border-accent/30 transition-all duration-200 cursor-pointer"
                 aria-label="Add to wishlist"
               >
                 <Heart size={20} />
@@ -208,7 +210,7 @@ export default function ProductPage() {
                 { icon: Shield, text: 'Secure Purchase' },
                 { icon: RotateCcw, text: '14-Day Refund' },
               ].map(({ icon: Icon, text }) => (
-                <div key={text} className="flex items-center gap-2 text-sm text-gray-400">
+                <div key={text} className="flex items-center gap-2 text-sm text-muted">
                   <Icon size={16} className="text-brand-400 flex-shrink-0" />
                   {text}
                 </div>
@@ -219,7 +221,10 @@ export default function ProductPage() {
 
         {/* Related Products */}
         <div className="mt-20">
-          <h2 className="text-2xl font-bold text-white mb-8">You May Also Like</h2>
+          <div className="flex items-center gap-3 mb-8">
+            <Gamepad2 size={20} className="text-brand-400" />
+            <h2 className="font-heading text-2xl font-bold text-white tracking-tight">You May Also Like</h2>
+          </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {relatedProducts.map((p) => (
               <ProductCard key={p.id} product={p} />

@@ -7,9 +7,10 @@ import {
   ArrowRight,
   Sparkles,
   Flame,
-  Clock,
-  ChevronRight,
   Gamepad2,
+  ChevronRight,
+  Zap,
+  Trophy,
 } from 'lucide-react';
 
 const featuredProducts = [
@@ -160,18 +161,14 @@ export default function HomePage() {
           <div className="flex items-end justify-between mb-10">
             <div>
               <div className="flex items-center gap-2 mb-3">
-                <Sparkles size={18} className="text-brand-400" />
-                <span className="text-sm font-semibold text-brand-400 uppercase tracking-wider">
-                  Browse
-                </span>
+                <Sparkles size={16} className="text-brand-400" />
+                <span className="section-label text-brand-400">Browse</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white">
-                Shop by Category
-              </h2>
+              <h2 className="section-heading">Shop by Category</h2>
             </div>
             <Link
               href="/products"
-              className="hidden sm:flex items-center gap-1 text-sm font-medium text-gray-400 hover:text-brand-400 transition-colors"
+              className="hidden sm:flex items-center gap-1 text-sm font-medium text-muted hover:text-brand-400 transition-colors duration-200"
             >
               View All <ChevronRight size={16} />
             </Link>
@@ -182,20 +179,22 @@ export default function HomePage() {
               <Link
                 key={cat.slug}
                 href={`/products?category=${cat.slug}`}
-                className="group relative aspect-[4/3] rounded-2xl overflow-hidden"
+                className="group relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/5 hover:border-brand-500/30 transition-all duration-300"
               >
                 <img
                   src={cat.image}
                   alt={cat.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 <div className="absolute bottom-0 inset-x-0 p-5">
-                  <h3 className="text-lg font-bold text-white mb-0.5">{cat.name}</h3>
-                  <p className="text-sm text-gray-300">{cat.count.toLocaleString()} items</p>
+                  <h3 className="font-heading text-sm sm:text-base font-bold text-white mb-0.5 tracking-wide">
+                    {cat.name}
+                  </h3>
+                  <p className="text-xs text-muted">{cat.count.toLocaleString()} items</p>
                 </div>
-                <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-0 translate-x-2">
+                <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-500/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-0 translate-x-2">
                   <ArrowRight size={18} className="text-white" />
                 </div>
               </Link>
@@ -210,18 +209,14 @@ export default function HomePage() {
           <div className="flex items-end justify-between mb-10">
             <div>
               <div className="flex items-center gap-2 mb-3">
-                <Flame size={18} className="text-red-400" />
-                <span className="text-sm font-semibold text-red-400 uppercase tracking-wider">
-                  Hot Right Now
-                </span>
+                <Flame size={16} className="text-accent" />
+                <span className="section-label text-accent">Hot Right Now</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white">
-                Top Sellers
-              </h2>
+              <h2 className="section-heading">Top Sellers</h2>
             </div>
             <Link
               href="/products?featured=true"
-              className="hidden sm:flex items-center gap-1 text-sm font-medium text-gray-400 hover:text-brand-400 transition-colors"
+              className="hidden sm:flex items-center gap-1 text-sm font-medium text-muted hover:text-brand-400 transition-colors duration-200"
             >
               See All <ChevronRight size={16} />
             </Link>
@@ -238,36 +233,39 @@ export default function HomePage() {
       {/* CTA Banner */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl">
+          <div className="relative overflow-hidden rounded-3xl border border-brand-500/20">
             {/* Background */}
-            <div className="absolute inset-0 bg-gradient-to-r from-brand-700 via-brand-600 to-emerald-600" />
+            <div className="absolute inset-0 bg-gradient-to-br from-brand-900 via-surface to-accent-dark/20" />
+            <div className="absolute inset-0 bg-hero-glow" />
             <div
-              className="absolute inset-0 opacity-10"
+              className="absolute inset-0 opacity-[0.04]"
               style={{
                 backgroundImage:
-                  'radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 50%, white 1px, transparent 1px)',
+                  'linear-gradient(rgba(167,139,250,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(167,139,250,0.3) 1px, transparent 1px)',
                 backgroundSize: '40px 40px',
               }}
             />
 
             <div className="relative px-8 py-16 sm:px-16 sm:py-20 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 mb-6">
-                <Gamepad2 size={14} />
-                <span className="text-sm font-semibold">Summer Sale Event</span>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-500/15 border border-brand-500/20 mb-6">
+                <Gamepad2 size={14} className="text-brand-400" />
+                <span className="font-heading text-[10px] font-semibold tracking-[0.2em] uppercase text-brand-300">
+                  Summer Sale Event
+                </span>
               </div>
-              <h2 className="text-3xl sm:text-5xl font-black text-white mb-4 leading-tight">
+              <h2 className="font-heading text-3xl sm:text-5xl font-black text-white mb-4 leading-tight tracking-tight">
                 Up to 50% Off Top Games
               </h2>
-              <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+              <p className="text-lg text-muted mb-8 max-w-2xl mx-auto leading-relaxed">
                 Join 200,000+ gamers and grab the best deals on AAA titles,
                 indie gems, and gaming gear. Limited time only.
               </p>
               <Link
                 href="/products"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-brand-700 font-bold rounded-xl text-lg hover:bg-gray-100 transition-colors shadow-lg"
+                className="btn-accent text-base px-8 py-4 group"
               >
                 Shop the Sale
-                <ArrowRight size={20} />
+                <ArrowRight size={18} className="transition-transform duration-200 group-hover:translate-x-1" />
               </Link>
             </div>
           </div>
@@ -277,14 +275,18 @@ export default function HomePage() {
       {/* Newsletter */}
       <section className="py-20 bg-surface-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-            Stay in the Game
-          </h2>
-          <p className="text-gray-400 mb-8 max-w-md mx-auto">
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <Zap size={16} className="text-neon-cyan" />
+            <span className="section-label text-neon-cyan">Newsletter</span>
+          </div>
+          <h2 className="section-heading mb-3">Stay in the Game</h2>
+          <p className="text-muted mb-8 max-w-md mx-auto">
             Subscribe for exclusive deals, new releases, and gamer-only discounts.
           </p>
           <div className="flex gap-3 max-w-md mx-auto">
+            <label className="sr-only" htmlFor="newsletter-email">Email address</label>
             <input
+              id="newsletter-email"
               type="email"
               placeholder="Enter your email"
               className="input-field flex-1"
