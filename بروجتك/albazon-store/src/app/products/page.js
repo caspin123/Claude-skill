@@ -6,21 +6,21 @@ import ProductCard from '@/components/ProductCard';
 import { SlidersHorizontal, Grid3X3, LayoutGrid, X } from 'lucide-react';
 
 const allProducts = [
-  { id: '1', name: 'Pro Wireless Headphones', slug: 'pro-wireless-headphones', price: 349.99, salePrice: 279.99, image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600', stock: 150, featured: true, rating: 4.8, reviews: 2847, category: { name: 'Electronics', slug: 'electronics' } },
-  { id: '2', name: 'Ultra Smart Watch X', slug: 'ultra-smart-watch-x', price: 499.99, salePrice: 399.99, image: 'https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=600', stock: 89, featured: true, rating: 4.9, reviews: 1523, category: { name: 'Electronics', slug: 'electronics' } },
-  { id: '3', name: '4K Drone Pro Max', slug: '4k-drone-pro-max', price: 1299.99, salePrice: null, image: 'https://images.unsplash.com/photo-1507582020474-9a35b7d455d9?w=600', stock: 34, featured: true, rating: 4.7, reviews: 892, category: { name: 'Electronics', slug: 'electronics' } },
-  { id: '4', name: 'Designer Leather Jacket', slug: 'designer-leather-jacket', price: 899.99, salePrice: 699.99, image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600', stock: 45, featured: true, rating: 4.6, reviews: 567, category: { name: 'Fashion', slug: 'fashion' } },
-  { id: '5', name: 'Limited Edition Sneakers', slug: 'limited-edition-sneakers', price: 299.99, salePrice: null, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600', stock: 120, featured: false, rating: 4.8, reviews: 3241, category: { name: 'Fashion', slug: 'fashion' } },
-  { id: '6', name: 'Premium Sunglasses', slug: 'premium-sunglasses', price: 249.99, salePrice: 199.99, image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600', stock: 200, featured: false, rating: 4.5, reviews: 1876, category: { name: 'Fashion', slug: 'fashion' } },
-  { id: '7', name: 'Modular Smart Sofa', slug: 'modular-smart-sofa', price: 2499.99, salePrice: 1999.99, image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600', stock: 12, featured: true, rating: 4.9, reviews: 234, category: { name: 'Home & Living', slug: 'home-living' } },
-  { id: '8', name: 'Smart Home Hub Pro', slug: 'smart-home-hub-pro', price: 449.99, salePrice: null, image: 'https://images.unsplash.com/photo-1558089687-f282ffcbc126?w=600', stock: 78, featured: false, rating: 4.4, reviews: 1102, category: { name: 'Home & Living', slug: 'home-living' } },
-  { id: '9', name: 'Carbon Fiber Road Bike', slug: 'carbon-fiber-road-bike', price: 3499.99, salePrice: 2999.99, image: 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=600', stock: 18, featured: true, rating: 4.9, reviews: 445, category: { name: 'Sports', slug: 'sports' } },
-  { id: '10', name: 'Smart Fitness Tracker', slug: 'smart-fitness-tracker', price: 179.99, salePrice: 129.99, image: 'https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=600', stock: 300, featured: false, rating: 4.6, reviews: 4521, category: { name: 'Sports', slug: 'sports' } },
-  { id: '11', name: 'Mechanical Gaming Keyboard', slug: 'mechanical-gaming-keyboard', price: 199.99, salePrice: 159.99, image: 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=600', stock: 250, featured: false, rating: 4.7, reviews: 2103, category: { name: 'Electronics', slug: 'electronics' } },
-  { id: '12', name: 'Wireless Earbuds Elite', slug: 'wireless-earbuds-elite', price: 229.99, salePrice: null, image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=600', stock: 180, featured: false, rating: 4.5, reviews: 3890, category: { name: 'Electronics', slug: 'electronics' } },
+  { id: '1', name: 'Cyber Horizon 2077', slug: 'cyber-horizon-2077', price: 69.99, salePrice: 49.99, image: 'https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=600', stock: 999, featured: true, rating: 4.8, reviews: 12847, category: { name: 'PC Games', slug: 'pc-games' } },
+  { id: '2', name: 'Shadow Legends: Rebirth', slug: 'shadow-legends-rebirth', price: 59.99, salePrice: null, image: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=600', stock: 999, featured: true, rating: 4.9, reviews: 8523, category: { name: 'PC Games', slug: 'pc-games' } },
+  { id: '3', name: 'PlayStation 5 Pro Console', slug: 'ps5-pro-console', price: 699.99, salePrice: 649.99, image: 'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600', stock: 45, featured: true, rating: 4.9, reviews: 6234, category: { name: 'Consoles', slug: 'consoles' } },
+  { id: '4', name: 'RGB Mechanical Keyboard', slug: 'rgb-mechanical-keyboard', price: 189.99, salePrice: 149.99, image: 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=600', stock: 250, featured: true, rating: 4.7, reviews: 4567, category: { name: 'Accessories', slug: 'accessories' } },
+  { id: '5', name: 'Galactic Wars: Frontier', slug: 'galactic-wars-frontier', price: 49.99, salePrice: null, image: 'https://images.unsplash.com/photo-1552820728-8b83bb6b2b28?w=600', stock: 999, featured: false, rating: 4.6, reviews: 3241, category: { name: 'PC Games', slug: 'pc-games' } },
+  { id: '6', name: 'Xbox Series X Bundle', slug: 'xbox-series-x-bundle', price: 599.99, salePrice: 499.99, image: 'https://images.unsplash.com/photo-1621259182978-fbf93132d53d?w=600', stock: 30, featured: true, rating: 4.8, reviews: 3456, category: { name: 'Consoles', slug: 'consoles' } },
+  { id: '7', name: 'Pro Gaming Headset 7.1', slug: 'pro-gaming-headset', price: 299.99, salePrice: 229.99, image: 'https://images.unsplash.com/photo-1599669454699-248893623440?w=600', stock: 120, featured: true, rating: 4.8, reviews: 5678, category: { name: 'Accessories', slug: 'accessories' } },
+  { id: '8', name: 'Dragon Age: Dark Realm', slug: 'dragon-age-dark-realm', price: 69.99, salePrice: 54.99, image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600', stock: 999, featured: true, rating: 4.7, reviews: 7892, category: { name: 'PC Games', slug: 'pc-games' } },
+  { id: '9', name: 'Nintendo Switch OLED', slug: 'nintendo-switch-oled', price: 349.99, salePrice: null, image: 'https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=600', stock: 80, featured: false, rating: 4.8, reviews: 9876, category: { name: 'Consoles', slug: 'consoles' } },
+  { id: '10', name: 'Ultra Gaming Mouse', slug: 'ultra-gaming-mouse', price: 129.99, salePrice: 99.99, image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=600', stock: 300, featured: false, rating: 4.6, reviews: 4521, category: { name: 'Accessories', slug: 'accessories' } },
+  { id: '11', name: 'Neon Racer: Turbo', slug: 'neon-racer-turbo', price: 39.99, salePrice: 29.99, image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600', stock: 999, featured: false, rating: 4.5, reviews: 2103, category: { name: 'Console Games', slug: 'console-games' } },
+  { id: '12', name: 'Gaming Monitor 27" 4K', slug: 'gaming-monitor-27-4k', price: 799.99, salePrice: 649.99, image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600', stock: 55, featured: false, rating: 4.7, reviews: 3890, category: { name: 'Accessories', slug: 'accessories' } },
 ];
 
-const categories = ['All', 'Electronics', 'Fashion', 'Home & Living', 'Sports'];
+const categories = ['All', 'PC Games', 'Console Games', 'Consoles', 'Accessories'];
 const sortOptions = [
   { value: 'featured', label: 'Featured' },
   { value: 'price-asc', label: 'Price: Low to High' },
@@ -62,9 +62,9 @@ export default function ProductsPage() {
       {/* Header */}
       <div className="bg-surface-50/50 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2">Products</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2">Game Store</h1>
           <p className="text-gray-400">
-            Showing {filtered.length} products
+            Showing {filtered.length} items
             {category !== 'All' && ` in ${category}`}
           </p>
         </div>
@@ -137,12 +137,12 @@ export default function ProductsPage() {
 
         {filtered.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-gray-500 text-lg">No products found in this category.</p>
+            <p className="text-gray-500 text-lg">No games found in this category.</p>
             <button
               onClick={() => setCategory('All')}
               className="mt-4 btn-secondary"
             >
-              View All Products
+              View All Games
             </button>
           </div>
         )}

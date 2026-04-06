@@ -8,26 +8,26 @@ import ProductCard from '@/components/ProductCard';
 import useCart from '@/hooks/useCart';
 import { formatPrice, getDiscountPercent } from '@/lib/utils';
 import {
-  ShoppingCart, Heart, Star, Truck, Shield, RotateCcw,
+  ShoppingCart, Heart, Star, Download, Shield, RotateCcw,
   ChevronRight, Minus, Plus, Check,
 } from 'lucide-react';
 
 const productDB = {
-  'pro-wireless-headphones': { id: '1', name: 'Pro Wireless Headphones', slug: 'pro-wireless-headphones', description: 'Experience audio perfection with our flagship Pro Wireless Headphones. Featuring industry-leading Active Noise Cancellation, Hi-Res Audio certification, and ultra-comfortable memory foam ear cushions designed for all-day wear. The 40-hour battery life ensures your music never stops, while the premium titanium drivers deliver crystal-clear sound across the entire frequency range.\n\nBuilt with aerospace-grade materials for unmatched durability, these headphones feature multipoint Bluetooth 5.3 connectivity, allowing you to seamlessly switch between devices. The intuitive touch controls and voice assistant integration make controlling your audio effortless.', price: 349.99, salePrice: 279.99, image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800', images: ['https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800', 'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800', 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800'], stock: 150, featured: true, rating: 4.8, reviews: 2847, category: { name: 'Electronics' }, specs: [['Driver', '50mm Titanium'], ['Battery', '40 Hours'], ['Bluetooth', '5.3'], ['ANC', 'Adaptive'], ['Weight', '250g'], ['Charging', 'USB-C Fast']] },
-  'ultra-smart-watch-x': { id: '2', name: 'Ultra Smart Watch X', slug: 'ultra-smart-watch-x', description: 'The Ultra Smart Watch X redefines what a smartwatch can do. With its stunning 2.1" AMOLED always-on display reaching 2000 nits brightness, every glance is crystal clear even in direct sunlight. Track over 100 workout types, monitor blood oxygen, ECG, and sleep patterns with medical-grade sensors.\n\nCrafted from titanium with a sapphire crystal display, it is built for adventure and luxury alike. The 7-day battery life means fewer interruptions, and with IP68 water resistance rated to 100m, it goes wherever you do.', price: 499.99, salePrice: 399.99, image: 'https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=800', images: ['https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=800'], stock: 89, featured: true, rating: 4.9, reviews: 1523, category: { name: 'Electronics' }, specs: [['Display', '2.1" AMOLED'], ['Battery', '7 Days'], ['Water', 'IP68 100m'], ['Sensors', 'SpO2, ECG, HR'], ['Material', 'Titanium'], ['OS', 'WearOS 5']] },
-  '4k-drone-pro-max': { id: '3', name: '4K Drone Pro Max', slug: '4k-drone-pro-max', description: 'Capture breathtaking aerial footage with the 4K Drone Pro Max. Featuring a Hasselblad camera system with 4K HDR video at 120fps, 48MP photos, and a 1-inch CMOS sensor for stunning image quality in any lighting condition.\n\n45 minutes of flight time, omnidirectional obstacle avoidance with 12 sensors, and AI-powered subject tracking make this the ultimate creative tool for filmmakers and content creators.', price: 1299.99, salePrice: null, image: 'https://images.unsplash.com/photo-1507582020474-9a35b7d455d9?w=800', images: ['https://images.unsplash.com/photo-1507582020474-9a35b7d455d9?w=800'], stock: 34, featured: true, rating: 4.7, reviews: 892, category: { name: 'Electronics' }, specs: [['Camera', '4K HDR 120fps'], ['Flight', '45 minutes'], ['Range', '15km'], ['Sensors', '12 Obstacle'], ['Photo', '48MP RAW'], ['Weight', '895g']] },
+  'cyber-horizon-2077': { id: '1', name: 'Cyber Horizon 2077', slug: 'cyber-horizon-2077', description: 'Dive into a neon-lit open world where every choice shapes the fate of a sprawling cyberpunk metropolis. As a mercenary outlaw, you will navigate corporate conspiracies, hack into fortified systems, and engage in adrenaline-pumping combat across massive urban landscapes.\n\nFeaturing ray-traced visuals, a dynamic weather system, and over 200 hours of content, Cyber Horizon 2077 delivers the ultimate sci-fi RPG experience. Customize your character with cybernetic enhancements, build alliances with diverse factions, and uncover the secrets of a world on the brink of collapse.', price: 69.99, salePrice: 49.99, image: 'https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=800', images: ['https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=800', 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800'], stock: 999, featured: true, rating: 4.8, reviews: 12847, category: { name: 'PC Games' }, specs: [['Genre', 'Open World RPG'], ['Platform', 'PC / PS5 / Xbox'], ['Players', '1 (Single)'], ['Size', '85 GB'], ['Rating', 'M (Mature)'], ['Release', '2024']] },
+  'shadow-legends-rebirth': { id: '2', name: 'Shadow Legends: Rebirth', slug: 'shadow-legends-rebirth', description: 'Return to the dark fantasy realm of Eldoria in this epic action RPG sequel. Wield legendary weapons, master devastating magic, and face bosses that will test your every skill. The Rebirth expansion adds an entirely new continent, 6 character classes, and a deep crafting system.\n\nWith souls-like combat refined to perfection and a haunting orchestral soundtrack, Shadow Legends: Rebirth raises the bar for the genre. Explore procedurally generated dungeons, forge powerful gear, and challenge other players in intense PvP arenas.', price: 59.99, salePrice: null, image: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800', images: ['https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800'], stock: 999, featured: true, rating: 4.9, reviews: 8523, category: { name: 'PC Games' }, specs: [['Genre', 'Action RPG'], ['Platform', 'PC / PS5'], ['Players', '1-4 Co-op'], ['Size', '65 GB'], ['Rating', 'T (Teen)'], ['Release', '2024']] },
+  'ps5-pro-console': { id: '3', name: 'PlayStation 5 Pro Console', slug: 'ps5-pro-console', description: 'Experience gaming at its finest with the PlayStation 5 Pro. Featuring an upgraded GPU delivering up to 45% faster rendering, enhanced ray tracing capabilities, and AI-driven upscaling for stunning 4K visuals at 120fps.\n\nThe 2TB SSD provides lightning-fast load times, while the redesigned DualSense Pro controller offers haptic feedback that immerses you in every game world. Backward compatible with thousands of PS4 and PS5 titles, the PS5 Pro is the ultimate gaming machine.', price: 699.99, salePrice: 649.99, image: 'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=800', images: ['https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=800'], stock: 45, featured: true, rating: 4.9, reviews: 6234, category: { name: 'Consoles' }, specs: [['GPU', 'RDNA 3+ Enhanced'], ['Storage', '2TB NVMe SSD'], ['Output', '4K 120fps / 8K'], ['RAM', '16GB GDDR6'], ['Audio', '3D Tempest'], ['Wi-Fi', 'Wi-Fi 7']] },
 };
 
 const relatedProducts = [
-  { id: '11', name: 'Mechanical Gaming Keyboard', slug: 'mechanical-gaming-keyboard', price: 199.99, salePrice: 159.99, image: 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=600', stock: 250, featured: false, rating: 4.7, reviews: 2103, category: { name: 'Electronics' } },
-  { id: '12', name: 'Wireless Earbuds Elite', slug: 'wireless-earbuds-elite', price: 229.99, salePrice: null, image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=600', stock: 180, featured: false, rating: 4.5, reviews: 3890, category: { name: 'Electronics' } },
-  { id: '10', name: 'Smart Fitness Tracker', slug: 'smart-fitness-tracker', price: 179.99, salePrice: 129.99, image: 'https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=600', stock: 300, featured: false, rating: 4.6, reviews: 4521, category: { name: 'Sports' } },
-  { id: '5', name: 'Limited Edition Sneakers', slug: 'limited-edition-sneakers', price: 299.99, salePrice: null, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600', stock: 120, featured: false, rating: 4.8, reviews: 3241, category: { name: 'Fashion' } },
+  { id: '4', name: 'RGB Mechanical Keyboard', slug: 'rgb-mechanical-keyboard', price: 189.99, salePrice: 149.99, image: 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=600', stock: 250, featured: true, rating: 4.7, reviews: 4567, category: { name: 'Accessories' } },
+  { id: '7', name: 'Pro Gaming Headset 7.1', slug: 'pro-gaming-headset', price: 299.99, salePrice: 229.99, image: 'https://images.unsplash.com/photo-1599669454699-248893623440?w=600', stock: 120, featured: true, rating: 4.8, reviews: 5678, category: { name: 'Accessories' } },
+  { id: '10', name: 'Ultra Gaming Mouse', slug: 'ultra-gaming-mouse', price: 129.99, salePrice: 99.99, image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=600', stock: 300, featured: false, rating: 4.6, reviews: 4521, category: { name: 'Accessories' } },
+  { id: '5', name: 'Galactic Wars: Frontier', slug: 'galactic-wars-frontier', price: 49.99, salePrice: null, image: 'https://images.unsplash.com/photo-1552820728-8b83bb6b2b28?w=600', stock: 999, featured: false, rating: 4.6, reviews: 3241, category: { name: 'PC Games' } },
 ];
 
 export default function ProductPage() {
   const params = useParams();
-  const product = productDB[params.id] || productDB['pro-wireless-headphones'];
+  const product = productDB[params.id] || productDB['cyber-horizon-2077'];
   const [qty, setQty] = useState(1);
   const [selectedImg, setSelectedImg] = useState(0);
   const [added, setAdded] = useState(false);
@@ -57,7 +57,7 @@ export default function ProductPage() {
         <div className="flex items-center gap-2 text-sm text-gray-500">
           <Link href="/" className="hover:text-white transition-colors">Home</Link>
           <ChevronRight size={14} />
-          <Link href="/products" className="hover:text-white transition-colors">Products</Link>
+          <Link href="/products" className="hover:text-white transition-colors">Games</Link>
           <ChevronRight size={14} />
           <span className="text-gray-300">{product.name}</span>
         </div>
@@ -204,9 +204,9 @@ export default function ProductPage() {
             {/* Guarantees */}
             <div className="grid grid-cols-3 gap-3 pt-4 border-t border-white/5">
               {[
-                { icon: Truck, text: 'Free Shipping' },
-                { icon: Shield, text: '2-Year Warranty' },
-                { icon: RotateCcw, text: '30-Day Returns' },
+                { icon: Download, text: 'Instant Delivery' },
+                { icon: Shield, text: 'Secure Purchase' },
+                { icon: RotateCcw, text: '14-Day Refund' },
               ].map(({ icon: Icon, text }) => (
                 <div key={text} className="flex items-center gap-2 text-sm text-gray-400">
                   <Icon size={16} className="text-brand-400 flex-shrink-0" />

@@ -5,14 +5,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-  --brand: #F97316;
-  --brand-light: #FB923C;
-  --brand-dark: #EA580C;
-  --accent: #F59E0B;
-  --surface: #030712;
-  --surface-50: #0A0F1C;
-  --surface-100: #111827;
-  --surface-200: #1F2937;
+  --brand: #8B5CF6;
+  --brand-light: #A78BFA;
+  --brand-dark: #7C3AED;
+  --accent: #06D6A0;
+  --surface: #0A0A0F;
+  --surface-50: #0F0F1A;
+  --surface-100: #141422;
+  --surface-200: #1E1E2E;
   --glass: rgba(255,255,255,0.03);
   --glass-border: rgba(255,255,255,0.06);
   --text: #F9FAFB;
@@ -39,7 +39,7 @@ body {
 }
 
 ::selection {
-  background: rgba(249, 115, 22, 0.3);
+  background: rgba(139, 92, 246, 0.3);
   color: white;
 }
 
@@ -66,7 +66,7 @@ body {
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, #F97316, #F59E0B, #EF4444);
+    background: linear-gradient(135deg, #8B5CF6, #06D6A0, #00F5FF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -80,7 +80,7 @@ body {
     position: absolute;
     inset: -1px;
     border-radius: inherit;
-    background: linear-gradient(135deg, rgba(249,115,22,0.4), transparent 50%, rgba(245,158,11,0.4));
+    background: linear-gradient(135deg, rgba(139,92,246,0.4), transparent 50%, rgba(6,214,160,0.4));
     z-index: -1;
     opacity: 0;
     transition: opacity 0.3s;

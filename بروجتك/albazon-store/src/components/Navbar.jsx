@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ShoppingCart, Search, Menu, X, User, ChevronDown } from 'lucide-react';
+import { ShoppingCart, Search, Menu, X, Gamepad2 } from 'lucide-react';
 import useCart from '@/hooks/useCart';
 
 export default function Navbar() {
@@ -19,16 +19,17 @@ export default function Navbar() {
 
   const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/products', label: 'Products' },
-    { href: '/products?category=electronics', label: 'Electronics' },
-    { href: '/products?category=fashion', label: 'Fashion' },
+    { href: '/products', label: 'All Games' },
+    { href: '/products?category=pc-games', label: 'PC Games' },
+    { href: '/products?category=consoles', label: 'Consoles' },
+    { href: '/products?category=accessories', label: 'Accessories' },
   ];
 
   return (
     <>
       {/* Top bar */}
       <div className="bg-brand-600 text-white text-center text-sm py-2 px-4 font-medium">
-        Free shipping on orders over $99 — Use code <span className="font-bold">ALBAZON24</span>
+        Free digital delivery on all game codes — Use code <span className="font-bold">GAMER24</span> for 10% off
       </div>
 
       {/* Main nav */}
@@ -43,15 +44,15 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center font-black text-white text-lg shadow-glow-sm group-hover:shadow-glow transition-shadow duration-300">
-                A
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-glow-sm group-hover:shadow-glow transition-shadow duration-300">
+                <Gamepad2 size={22} className="text-white" />
               </div>
               <div>
                 <span className="text-xl font-black tracking-tight text-white">
                   ALBAZON
                 </span>
-                <span className="hidden sm:inline text-xs text-gray-500 block -mt-1 tracking-widest uppercase">
-                  store
+                <span className="hidden sm:inline text-xs text-brand-400 block -mt-1 tracking-widest uppercase font-bold">
+                  games
                 </span>
               </div>
             </Link>
@@ -114,7 +115,7 @@ export default function Navbar() {
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
                 <input
                   type="text"
-                  placeholder="Search products..."
+                  placeholder="Search games, consoles, accessories..."
                   className="input-field pl-12"
                   autoFocus
                 />

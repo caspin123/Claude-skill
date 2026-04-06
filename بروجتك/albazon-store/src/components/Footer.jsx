@@ -1,19 +1,19 @@
 import Link from 'next/link';
-import { Package, Shield, Truck, Headphones } from 'lucide-react';
+import { Zap, Shield, Download, Headphones, Gamepad2 } from 'lucide-react';
 
 const features = [
-  { icon: Truck, title: 'Free Shipping', desc: 'On orders over $99' },
+  { icon: Download, title: 'Instant Delivery', desc: 'Digital codes in seconds' },
   { icon: Shield, title: 'Secure Payment', desc: '256-bit encryption' },
-  { icon: Package, title: 'Easy Returns', desc: '30-day return policy' },
+  { icon: Zap, title: 'Best Prices', desc: 'Price match guarantee' },
   { icon: Headphones, title: '24/7 Support', desc: 'Always here to help' },
 ];
 
 const links = {
   Shop: [
-    { label: 'All Products', href: '/products' },
-    { label: 'Electronics', href: '/products?category=electronics' },
-    { label: 'Fashion', href: '/products?category=fashion' },
-    { label: 'Home & Living', href: '/products?category=home-living' },
+    { label: 'All Games', href: '/products' },
+    { label: 'PC Games', href: '/products?category=pc-games' },
+    { label: 'Consoles', href: '/products?category=consoles' },
+    { label: 'Accessories', href: '/products?category=accessories' },
   ],
   Company: [
     { label: 'About Us', href: '#' },
@@ -24,7 +24,7 @@ const links = {
   Support: [
     { label: 'Help Center', href: '#' },
     { label: 'Contact Us', href: '#' },
-    { label: 'Shipping Info', href: '#' },
+    { label: 'Refund Policy', href: '#' },
     { label: 'Track Order', href: '#' },
   ],
 };
@@ -57,16 +57,16 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center font-black text-white">
-                A
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center">
+                <Gamepad2 size={18} className="text-white" />
               </div>
               <span className="text-lg font-black tracking-tight">ALBAZON</span>
             </Link>
             <p className="text-sm text-gray-500 leading-relaxed mb-4">
-              Premium products, exceptional service. Your ultimate shopping destination.
+              Your ultimate destination for games, consoles, and gaming gear. Level up with us.
             </p>
             <div className="flex gap-3">
-              {['X', 'In', 'Ig'].map((s) => (
+              {['X', 'Dc', 'Tw'].map((s) => (
                 <div
                   key={s}
                   className="w-9 h-9 rounded-lg bg-surface-200 flex items-center justify-center text-xs font-bold text-gray-400 hover:text-white hover:bg-surface-300 transition-colors cursor-pointer"
@@ -102,7 +102,7 @@ export default function Footer() {
       <div className="border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-gray-600">
-            &copy; {new Date().getFullYear()} ALBAZON STORE. All rights reserved.
+            &copy; {new Date().getFullYear()} ALBAZON GAMES. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link href="#" className="text-xs text-gray-600 hover:text-gray-400 transition-colors">

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   LayoutDashboard, Package, ShoppingCart, Users,
-  Settings, LogOut, ChevronLeft, BarChart3,
+  Settings, LogOut, ChevronLeft, BarChart3, Gamepad2,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -21,12 +21,12 @@ export default function AdminSidebar() {
       {/* Brand */}
       <div className="p-6 border-b border-white/5">
         <Link href="/admin" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center font-black text-white text-lg shadow-glow-sm">
-            A
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-glow-sm">
+            <Gamepad2 size={20} className="text-white" />
           </div>
           <div>
             <span className="text-base font-black tracking-tight text-white">ALBAZON</span>
-            <span className="block text-[10px] text-gray-500 uppercase tracking-widest">Admin Panel</span>
+            <span className="block text-[10px] text-brand-400 uppercase tracking-widest font-bold">Games Admin</span>
           </div>
         </Link>
       </div>

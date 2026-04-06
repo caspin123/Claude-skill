@@ -50,7 +50,7 @@ export default function ProductCard({ product }) {
           )}
           {product.featured && (
             <span className="px-2.5 py-1 bg-brand-500 text-white text-xs font-bold rounded-lg">
-              HOT
+              NEW
             </span>
           )}
         </div>

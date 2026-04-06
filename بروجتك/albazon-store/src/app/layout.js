@@ -1,9 +1,9 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'ALBAZON STORE | Premium Shopping Experience',
-  description: 'Discover premium products at ALBAZON STORE. Electronics, fashion, home & living — all in one place with fast shipping worldwide.',
-  keywords: 'albazon, store, shopping, electronics, fashion, premium',
+  title: 'ALBAZON GAMES | Your Ultimate Game Store',
+  description: 'Discover the best video games, consoles, and gaming gear at ALBAZON GAMES. PC, PlayStation, Xbox, Nintendo — all in one place with instant digital delivery.',
+  keywords: 'albazon, games, gaming, video games, pc games, playstation, xbox, nintendo, game store',
 };
 
 export default function RootLayout({ children }) {
