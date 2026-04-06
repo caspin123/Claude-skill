@@ -1,0 +1,78 @@
+'use client';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import {
+  LayoutDashboard, Package, ShoppingCart, Users,
+  Settings, LogOut, ChevronLeft, BarChart3,
+} from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+const menuItems = [
+  { href: '/admin', icon: LayoutDashboard, label: 'Dashboard' },
+  { href: '/admin/products', icon: Package, label: 'Products' },
+  { href: '/admin/orders', icon: ShoppingCart, label: 'Orders' },
+];
+
+export default function AdminSidebar() {
+  const pathname = usePathname();
+
+  return (
+    <aside className="w-64 min-h-screen bg-surface-50 border-r border-white/5 flex flex-col">
+      {/* Brand */}
+      <div className="p-6 border-b border-white/5">
+        <Link href="/admin" className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center font-black text-white text-lg shadow-glow-sm">
+            A
+          </div>
+          <div>
+            <span className="text-base font-black tracking-tight text-white">ALBAZON</span>
+            <span className="block text-[10px] text-gray-500 uppercase tracking-widest">Admin Panel</span>
+          </div>
+        </Link>
+      </div>
+
+      {/* Menu */}
+      <nav className="flex-1 p-4 space-y-1">
+        <p className="text-[10px] text-gray-600 uppercase tracking-widest font-semibold px-3 mb-3">
+          Main Menu
+        </p>
+        {menuItems.map((item) => {
+          const isActive = pathname === item.href;
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={cn(
+                'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200',
+                isActive
+                  ? 'bg-brand-500/10 text-brand-400 border border-brand-500/20'
+                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+              )}
+            >
+              <item.icon size={18} />
+              {item.label}
+            </Link>
+          );
+        })}
+      </nav>
+
+      {/* Bottom */}
+      <div className="p-4 border-t border-white/5 space-y-1">
+        <Link href="/" className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors">
+          <ChevronLeft size={18} />
+          Back to Store
+        </Link>
+        <button
+          onClick={() => {
+            document.cookie = 'albazon_admin_token=; max-age=0; path=/';
+            window.location.href = '/admin/login';
+          }}
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-colors"
+        >
+          <LogOut size={18} />
+          Logout
+        </button>
+      </div>
+    </aside>
+  );
+}
