@@ -28,22 +28,23 @@
     position: fixed;
     inset: 0;
     z-index: 0;
+    overflow: hidden;
   }
 
-  #spline-wrap spline-viewer {
+  #spline-wrap iframe {
     width: 100%;
     height: 100%;
+    border: none;
     display: block;
   }
 
-  /* Cover Spline watermark (bottom-right logo) */
-  #spline-wrap::after {
-    content: '';
+  /* Cover Spline watermark (bottom-right corner) */
+  #spline-cover {
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 160px;
-    height: 50px;
+    width: 180px;
+    height: 56px;
     background: #000;
     z-index: 10;
   }
@@ -304,12 +305,15 @@
     50%      { opacity: .4; transform: scale(1.4); }
   }
 </style>
-<script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.27/build/spline-viewer.js"></script>
 </head>
 <body>
 
 <div id="spline-wrap">
-  <spline-viewer url="https://prod.spline.design/ikSVvSbdUEw5OvQ2kv5oaCU8/scene.splinecode"></spline-viewer>
+  <iframe
+    src="https://my.spline.design/retrofuturismbganimation-ikSVvSbdUEw5OvQ2kv5oaCU8/"
+    allowfullscreen
+  ></iframe>
+  <div id="spline-cover"></div>
 </div>
 
 <nav>
